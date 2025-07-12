@@ -11,6 +11,7 @@
         "filament/filament": "^3.3",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
+        "spatie/laravel-medialibrary": "^11.13",
         "spatie/laravel-permission": "^6.20"
     },
     "require-dev": {

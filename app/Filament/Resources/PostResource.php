@@ -3,21 +3,20 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
-use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
+
 
 class PostResource extends Resource
 {
@@ -46,6 +45,12 @@ class PostResource extends Resource
 
             Toggle::make('is_published')
                 ->label('Published'),
+
+            FileUpload::make('image')
+                ->label('image')
+                ->image()
+                ->visibility('public')
+                ->preserveFilenames(),
         ]);
     }
 
@@ -65,6 +70,9 @@ class PostResource extends Resource
                 TextColumn::make('created_at')
                     ->dateTime('Y-m-d H:i')
                     ->sortable(),
+                ImageColumn::make('image')
+                    ->label('image')
+                    ->disk('public')
             ])
             ->filters([
                 TernaryFilter::make('is_published')
