@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Forms\Components\TextInput;
@@ -40,6 +41,13 @@ class UserResource extends Resource
 
             Toggle::make('is_active')
                 ->default(true),
+
+            Select::make('roles')
+                ->label('roles')
+                ->multiple()
+                ->relationship('roles', 'name')
+                ->preload()
+                ->searchable(),
 
         ]);
 }
