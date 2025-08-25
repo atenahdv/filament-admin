@@ -21,18 +21,19 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}       
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps                           
+          protocol: ftp                          
           port: 21                                
           server-dir: /home/cp61664/filament.atenahadavi.com/
           local-dir: ./
           exclude: |
-            **/.git*
+           **/.git*
             **/.github/**
-            **/tests/**
+            **/node_modules/**
             **/.env
             **/.DS_Store
             **/storage/logs/**
             **/storage/framework/cache/**
+            **/storage/framework/sessions/**
             **/storage/framework/views/**
-            **/storage/app/public/**
+            **/storage/debugbar/**
             **/vendor/**
