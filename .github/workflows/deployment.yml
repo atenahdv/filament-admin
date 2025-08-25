@@ -1,4 +1,4 @@
-name: Deploy Laravel Project to cPanel (FTP)
+name: Deploy Laravel Project to cPanel (FTP delta)
 
 on:
   push:
@@ -14,32 +14,25 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          tools: composer
-          coverage: none
-
-      - name: Install PHP dependencies
-        run: composer install --no-dev --optimize-autoloader --prefer-dist
-
-      - name: Upload via FTP
+      
+      - name: Upload via FTP (delta)
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ${{ secrets.FTP_SERVER }}       
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps                
+          protocol: ftps                           
+          port: 21                                
           server-dir: /home/cp61664/filament.atenahadavi.com/
           local-dir: ./
           exclude: |
             **/.git*
             **/.github/**
-            **/node_modules/**
             **/tests/**
             **/.env
-            **/storage/framework/cache/**
+            **/.DS_Store
             **/storage/logs/**
+            **/storage/framework/cache/**
+            **/storage/framework/views/**
             **/storage/app/public/**
-            **/vendor/bin/**
+            **/vendor/**
