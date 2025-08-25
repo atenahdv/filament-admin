@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp                          
           port: 21                                
-          server-dir: /home/cp61664/filament.atenahadavi.com/
+          server-dir: /
           local-dir: ./
           exclude: |
            **/.git*
