@@ -21,8 +21,8 @@ class PostOverview extends BaseWidget
     {
         return [
             Stat::make('📝 posts', Post::count()),
-            Stat::make('📅 posts today', Post::whereDate('created_at', now())->count()),
-            Stat::make('👥 number users', User::count()),
+            Stat::make('📅 posts today now', Post::whereDate('created_at', now())->count()),
+            Stat::make('👥 number users test', User::count()),
         ];
     }
 }
